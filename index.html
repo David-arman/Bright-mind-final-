@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrightMind - EdTech App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(145deg, #e0f7fa, #fff9c4);
+      color: #1a1a1a;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(90deg, #1e3a8a, #2563eb);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+
+    .logo-container { display: flex; align-items: center; gap: 10px; }
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e3a8a;
+      font-weight: 700;
+      font-size: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .logo-img:hover { transform: rotate(20deg); }
+    .logo-text { font-size: 24px; font-weight: 700; letter-spacing: 1px; }
+
+    .nav-links { 
+      list-style: none; 
+      display: flex; 
+      gap: 20px; 
+      margin: 0; 
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      text-decoration: underline;
+      color: #ffeb3b;
+      transform: scale(1.1);
+    }
+
+    .menu-toggle { display: none; font-size: 28px; cursor: pointer; }
+
+    /* MOBILE MENU */
+    @media (max-width: 768px) {
+      .nav-links {
+        width: 100%;
+        flex-direction: column;
+        display: none;
+        padding: 10px 0;
+        gap: 10px;
+      }
+      .menu-toggle { display: block; }
+      .nav-links.nav-active { display: flex; }
+    }
+
+    .container { padding: 20px; max-width: 1000px; margin: auto; display: flex; flex-direction: column; gap: 25px; }
+
+    .card, .notes-section, .prev-questions-section {
+      background: linear-gradient(135deg, #ffffff, #e3f2fd);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transition: all 0.5s ease, transform 0.5s ease;
+      border-left: 5px solid #1e3a8a;
+    }
+
+    .card:hover, .notes-section:hover, .prev-questions-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    }
+
+    .btn {
+      padding: 12px 22px;
+      background: linear-gradient(90deg, #1e3a8a, #2563eb);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 12px;
+    }
+
+    .btn:hover { background: linear-gradient(90deg, #3b82f6, #60a5fa); transform: scale(1.05); }
+
+    .highlight-red {
+      background: linear-gradient(135deg, #ffe5e5, #ffcccc);
+      border-left: 5px solid #d32f2f;
+    }
+
+    /* ANIMATIONS SECTION */
+    #animations {
+      background: linear-gradient(135deg, #e1ffe7, #c8ffd4);
+      border-left: 5px solid #16a34a;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    #ai-section {
+      background: linear-gradient(145deg, #fff3e0, #ffe0b2);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border-left: 5px solid #fb8c00;
+    }
+
+    #contact-section {
+      background: linear-gradient(145deg, #e0f7fa, #b2ebf2);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border-left: 5px solid #0288d1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <div class="logo-img">B</div>
+    <div class="logo-text">BrightMind</div>
+  </div>
+
+  <ul class="nav-links" id="navMenu">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#login">Login</a></li>
+    <li><a href="#ai-section">AI</a></li>
+    <li><a href="#contact-section">Contact</a></li>
+  </ul>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+</header>
+
+<div class="container">
+
+  <div class="card" id="home">
+    <h2>Welcome to BrightMind</h2>
+    <p>Unlock Your Potential Today with BrightMind – Where Success Begins!</p>
+  </div>
+
+  <div class="card" id="login">
+    <h2>🔐 Login</h2>
+    <p>Select your role to continue:</p>
+    <button class="btn" onclick="loginStudent()">Student Login</button>
+    <button class="btn" onclick="loginParent()">Parent Login</button>
+  </div>
+
+  <div class="card" id="courses">
+    <h2>🎓 Study Levels</h2>
+    <ul class="lesson-list" id="studyList">
+      <li>O Level – Mathematics, Physics, English</li>
+      <li>A Level – Pure Math, Chemistry, Economics</li>
+      <li>SAT – Math & English Practice</li>
+      <li>IELTS – Speaking, Reading, Listening, Writing</li>
+      <li class="extra" style="display:none;">O Level – Biology, Chemistry, Accounting</li>
+      <li class="extra" style="display:none;">A Level – Further Math, Business, Physics</li>
+      <li class="extra" style="display:none;">SAT Advanced Reading Practice</li>
+      <li class="extra" style="display:none;">IELTS Advanced Practice Tests</li>
+    </ul>
+    <button class="btn" onclick="toggleMore()">See More</button>
+  </div>
+
+  <div class="notes-section" id="notes">
+    <h3>📝 Notes</h3>
+    <ul>
+      <li>Algebra formulas and shortcuts</li>
+      <li>Physics motion equations</li>
+      <li>English grammar rules</li>
+    </ul>
+    <button class="btn">View All Notes</button>
+  </div>
+
+  <div class="card highlight-red" id="quiz">
+    <h2>📝 Quiz of the Day</h2>
+    <p id="quizQuestion">Click below to get today's quiz question!</p>
+    <button class="btn" onclick="loadQuiz()">Load Quiz</button>
+  </div>
+
+  <div class="card highlight-red" id="mock-test">
+    <h2>🧪 Mock Tests</h2>
+    <p>Full-length mock tests for A-Level, O-Level, SAT & IELTS.</p>
+    <button class="btn" onclick="startMockTest()">Start Mock Test</button>
+  </div>
+
+  <div class="prev-questions-section" id="prev-questions">
+    <h3>📚 Previous Questions</h3>
+    <ul>
+      <li>O Level Math Past Papers</li>
+      <li>A Level Physics Past Papers</li>
+      <li>SAT Practice Questions</li>
+      <li>IELTS Writing Samples</li>
+    </ul>
+    <button class="btn">View Previous Questions</button>
+  </div>
+
+  <!-- ANIMATIONS SECTION -->
+  <div class="card" id="animations">
+    <h2>🎞️ Animations</h2>
+    <p>Enjoy smooth educational animations that make learning easier!</p>
+    <ul class="lesson-list">
+      <li>Algebra Animations</li>
+      <li>Physics Motion Visuals</li>
+      <li>Grammar Animated Lessons</li>
+      <li>Chemistry Reactions</li>
+    </ul>
+    <button class="btn">View Animations</button>
+  </div>
+
+  <!-- AI SECTION RESTORED -->
+  <div id="ai-section" class="card">
+    <h2>🤖 AI Study Assistant</h2>
+    <p>Your personal AI tutor for A Level, O Level, SAT & IELTS.</p>
+    <ul class="lesson-list">
+      <li>Ask any question instantly</li>
+      <li>Generate practice questions</li>
+      <li>IELTS speaking mock with scoring</li>
+      <li>SAT essay feedback</li>
+    </ul>
+    <button class="btn" onclick="openAISection()">Open AI Assistant</button>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <div class="card" id="contact-section">
+    <h2>📞 Contact Us</h2>
+    <p>We’d love to hear from you! Reach out via email or phone:</p>
+    <ul class="lesson-list">
+      <li>Email: support@brightmind.com</li>
+      <li>Phone: +880 1234 567890</li>
+      <li>Address: 123 BrightMind St, Dhaka, Bangladesh</li>
+    </ul>
+    <button class="btn" onclick="contactUs()">Send Message</button>
+  </div>
+
+  <div class="card" id="progress">
+    <h2>📊 Learning Progress</h2>
+    <p id="progress">Your progress will appear here.</p>
+    <button class="btn" onclick="showProgress()">Show Progress</button>
+  </div>
+
+</div>
+
+<script>
+  function toggleMenu() {
+    var menu = document.getElementById('navMenu');
+    menu.classList.toggle('nav-active');
+  }
+
+  // AUTO CLOSE MENU ON SCROLL
+  window.addEventListener("scroll", function () {
+    var menu = document.getElementById("navMenu");
+    if (menu.classList.contains("nav-active")) {
+      setTimeout(() => menu.classList.remove("nav-active"), 150);
+    }
+  });
+
+  function loginStudent() { alert("Redirecting to Student Login..."); }
+  function loginParent() { alert("Redirecting to Parent Login..."); }
+
+  function loadQuiz() {
+    document.getElementById("quizQuestion")
